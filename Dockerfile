@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Use the shell form to allow environment variable expansion
-CMD gunicorn main:app
+CMD gunicorn app:app
