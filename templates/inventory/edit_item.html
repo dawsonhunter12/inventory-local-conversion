@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Edit Item{% endblock %}
+{% block content %}
+<h2 class="mt-4">Edit Item</h2>
+<form method="post">
+    {{ form.hidden_tag() }}
+
+    <!-- Part Name -->
+    <div class="mb-3">
+        {{ form.part_name.label(class="form-label") }}
+        {{ form.part_name(class="form-control") }}
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+        {{ form.description.label(class="form-label") }}
+        {{ form.description(class="form-control") }}
+    </div>
+
+    <!-- Origin Part Number -->
+    <div class="mb-3">
+        {{ form.origin_partnumber.label(class="form-label") }}
+        {{ form.origin_partnumber(class="form-control") }}
+    </div>
+
+    <!-- McMaster-Carr Part Number -->
+    <div class="mb-3">
+        {{ form.mcmaster_carr_partnumber.label(class="form-label") }}
+        {{ form.mcmaster_carr_partnumber(class="form-control") }}
+    </div>
+
+    <!-- Cost -->
+    <div class="mb-3">
+        {{ form.cost.label(class="form-label") }}
+        {{ form.cost(class="form-control") }}
+    </div>
+
+    <!-- Location -->
+    <div class="mb-3">
+        {{ form.location.label(class="form-label") }}
+        {{ form.location(class="form-control") }}
+    </div>
+
+    <!-- Notes -->
+    <div class="mb-3">
+        {{ form.notes.label(class="form-label") }}
+        {{ form.notes(class="form-control") }}
+    </div>
+
+    <!-- Quantity -->
+    <div class="mb-3">
+        {{ form.quantity.label(class="form-label") }}
+        {{ form.quantity(class="form-control") }}
+    </div>
+
+    <!-- Minimum On Hand -->
+    <div class="mb-3">
+        {{ form.min_on_hand.label(class="form-label") }}
+        {{ form.min_on_hand(class="form-control") }}
+    </div>
+
+    <!-- Manufacturer -->
+    <div class="mb-3">
+        {{ form.manufacturer.label(class="form-label") }}
+        {{ form.manufacturer(class="form-control") }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="{{ url_for('inventory.list_items') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

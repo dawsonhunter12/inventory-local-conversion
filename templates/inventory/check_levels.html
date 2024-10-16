@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Check Inventory Levels{% endblock %}
+{% block content %}
+<h2 class="mt-4">Items Below Minimum On Hand</h2>
+{% if items %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Part Number</th>
+                <th>Part Name</th>
+                <th>Description</th>
+                <th>Origin Number</th>
+                <th>McMaster-Carr Number</th>
+                <th>Cost</th>
+                <th>Location</th>
+                <th>Notes</th>
+                <th>Quantity</th>
+                <th>Min On Hand</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr class="{% if item.quantity == 0 %}table-danger{% else %}table-warning{% endif %}">
+                <td>{{ item.part_number }}</td>
+                <td><a href="{{ url_for('inventory.view_item', part_number=item.part_number) }}">{{ item.part_name }}</a></td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.origin_partnumber }}</td>
+                <td>{{ item.mcmaster_carr_partnumber }}</td>
+                <td>{{ item.cost }}</td>
+                <td>{{ item.location }}</td>
+                <td>{{ item.notes }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.min_on_hand }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>All items meet minimum on-hand levels.</p>
+{% endif %}
+{% endblock %}
