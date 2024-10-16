@@ -7,7 +7,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 5000
+# Set the environment variable for Flask
+ENV FLASK_APP=app.py
 
-# Use the PORT environment variable
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "app:app"]
+# Use the shell form of CMD to allow variable expansion
+CMD gunicorn --bind 0.0.0.0:$PORT app:app
